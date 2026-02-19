@@ -25,7 +25,7 @@ detect_arch() {
 install() {
     os=$(detect_os)
     arch=$(detect_arch)
-    version=$(curl -s https://api.github.com/repos/$REPO/releases/latest | grep -o '"tag_name"' | cut -d: -f2 | tr -d '" ')
+    version=$(curl -sL "https://api.github.com/repos/$REPO/releases/latest" | grep -o '"tag_name": *"[^"]*"' | cut -d'"' -f4)
     
     url="https://github.com/$REPO/releases/download/${version}/${BINARY_NAME}-${os}-${arch}"
     
