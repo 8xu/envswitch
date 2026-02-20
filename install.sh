@@ -12,17 +12,6 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-banner() {
-    echo -e "${BLUE}"
-    echo "  █████╗ ██╗      ██████╗  ██████╗ ██████╗ "
-    echo " ██╔══██╗██║     ██╔═══██╗██╔═══██╗██╔══██╗"
-    echo " ███████║██║     ██║   ██║██║   ██║██████╔╝"
-    echo " ██╔══██║██║     ██║   ██║██║   ██║██╔══██╗"
-    echo " ██║  ██║███████╗╚██████╔╝╚██████╔╝██║  ██║"
-    echo " ╚═╝  ╚═╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝"
-    echo -e "${NC}"
-}
-
 detect_os() {
     case "$(uname -s)" in
         Linux*)  echo "linux";;
@@ -53,7 +42,8 @@ get_version() {
 }
 
 install() {
-    banner
+    echo -e "${BLUE}envswitch installer${NC}"
+    echo ""
     
     check_deps
     
@@ -105,7 +95,8 @@ install() {
 }
 
 uninstall() {
-    banner
+    echo -e "${BLUE}envswitch uninstaller${NC}"
+    echo ""
     echo -e "${YELLOW}Uninstalling envswitch...${NC}"
     
     if [ -f /usr/local/bin/envswitch ]; then
@@ -120,7 +111,8 @@ uninstall() {
 }
 
 update() {
-    banner
+    echo -e "${BLUE}envswitch updater${NC}"
+    echo ""
     echo -e "${YELLOW}Checking for updates...${NC}"
     
     current=$(envswitch --version 2>/dev/null || echo "unknown")
